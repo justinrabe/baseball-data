@@ -1,10 +1,11 @@
 import pandas as pd
 import requests
-##from requests.auth import HTTPBasicAuth
 from zipfile import ZipFile
 import io
 
 # Example dataset
+
+## TODO Parameterize CSV to grab each CSV. The Function should take the file name as input and output a pandas DF
 url = 'https://github.com/chadwickbureau/baseballdatabank/archive/refs/tags/v2022.2.zip'
 
 response = requests.get(url,  stream=True, verify=False)
