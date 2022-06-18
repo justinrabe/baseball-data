@@ -8,7 +8,7 @@ import io
 
 def extract_csv_from_zip (filename, myzip):
     with myzip.open(filename) as myfile:
-        return pd.read_csv(myfile, nrows = 100)
+        return pd.read_csv(myfile, nrows = 100) ## limiting to 100 rows for faster testing
         
 url = 'https://github.com/chadwickbureau/baseballdatabank/archive/refs/tags/v2022.2.zip'
 
