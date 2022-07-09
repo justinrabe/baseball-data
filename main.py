@@ -39,3 +39,4 @@ def extract_csv_from_zip (filename, myzip):
 ##print(pd.io.sql.get_schema(df_pitching, name = 'pitching_data'))
 ## perform insert into SQL DB
 ## perform data transforms
+## need to draft up ETL ideas, error checking
