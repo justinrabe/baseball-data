@@ -4,6 +4,6 @@ RUN pip install pandas sqlalchemy requests
 
 WORKDIR /app
 
-copy pipeline.py pipeline.py
+copy main.py main.py
 
-ENTRYPOINT ["python", "pipeline.py"]
+ENTRYPOINT ["python", "main.py"]
