@@ -4,9 +4,9 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=baseball-data
+      - POSTGRES_DB=baseball_data
     volumes:
-      - "./baseball-data:/var/lib/postgresql/data:rw"
+      - "./baseball_data_volume:/var/lib/postgresql/data:rw"
     ports:
       - "5432:5432"
   pgadmin:
@@ -16,4 +16,11 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
-    
+
+docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="baseball_data" \
+  -v c:/Users/Justin/Documents/Git/baseball-data/baseball_data_volume:/var/lib/postgresql/data \
+  -p 5432:5432 \
+ postgres:13
