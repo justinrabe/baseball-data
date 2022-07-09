@@ -13,9 +13,10 @@ def main(params):
     password = params.password
     host = params.host 
     port = params.port 
+    db = 'baseball_data'
     ##table_name = params.table_name
-    ##engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
-
+    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    ##print (engine.__dict__)
     response = requests.get(url,  stream=True, verify=False)
     with ZipFile(io.BytesIO(response.content)) as myzip:
         df_pitching = extract_csv_from_zip('baseballdatabank-2022.2/core/Pitching.csv',myzip)
@@ -26,7 +27,7 @@ def main(params):
         df_FieldingOF = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOF.csv',myzip)
         df_FieldingOFsplit = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOFsplit.csv',myzip)
 
-    ##df_pitching.to_sql(name="pitching", con = engine, if_exists='append', chunksize=1000)
+    df_pitching.to_sql(name="pitching", con = engine, if_exists='append', chunksize=1000)
 
 def extract_csv_from_zip (filename, myzip):
     with myzip.open(filename) as myfile:
