@@ -23,11 +23,16 @@ def main(params):
         df_appearances = extract_csv_from_zip('baseballdatabank-2022.2/core/Appearances.csv',myzip)
         df_batting = extract_csv_from_zip('baseballdatabank-2022.2/core/Batting.csv',myzip)
         df_batting_post = extract_csv_from_zip('baseballdatabank-2022.2/core/BattingPost.csv',myzip)
-        df_Fielding = extract_csv_from_zip('baseballdatabank-2022.2/core/Fielding.csv',myzip)
-        df_FieldingOF = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOF.csv',myzip)
-        df_FieldingOFsplit = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOFsplit.csv',myzip)
+        df_fielding = extract_csv_from_zip('baseballdatabank-2022.2/core/Fielding.csv',myzip)
+        df_fieldingOF = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOF.csv',myzip)
+        df_fieldingOFsplit = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOFsplit.csv',myzip)
 
     df_pitching.to_sql(name="pitching", con = engine, if_exists='append', chunksize=1000)
+    df_appearances.to_sql(name="appearances", con = engine, if_exists='append', chunksize=1000)
+    df_batting.to_sql(name="batting", con = engine, if_exists='append', chunksize=1000)
+    df_batting_post.to_sql(name="batting_post", con = engine, if_exists='append', chunksize=1000)
+    df_fieldingOF.to_sql(name="fieldingOF", con = engine, if_exists='append', chunksize=1000)
+    df_fieldingOFsplit.to_sql(name="fieldingOFsplit", con = engine, if_exists='append', chunksize=1000)
 
 def extract_csv_from_zip (filename, myzip):
     with myzip.open(filename) as myfile:
