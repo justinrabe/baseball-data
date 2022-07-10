@@ -10,3 +10,11 @@ Pandas will ingest the data into pandas DataFrames. I will then take the columns
 Pandas might be too slow for these large datasets. I will need to use something different
 
 I can spin up a quick Flask website for visualization.
+
+# docker run -it \
+#   -e POSTGRES_USER="root" \
+#   -e POSTGRES_PASSWORD="root" \
+#   -e POSTGRES_DB="baseball_data" \
+#   -v c:/Users/Justin/Documents/Git/baseball-data/baseball_data_volume:/var/lib/postgresql/data \
+#   -p 5432:5432 \
+#  postgres:13
