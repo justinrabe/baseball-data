@@ -18,6 +18,7 @@ def main(params):
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     ##print (engine.__dict__)
     response = requests.get(url,  stream=True, verify=False)
+    ## optimization: for each CSV in zip, push to SQL
     with ZipFile(io.BytesIO(response.content)) as myzip:
         df_pitching = extract_csv_from_zip('baseballdatabank-2022.2/core/Pitching.csv',myzip)
         df_appearances = extract_csv_from_zip('baseballdatabank-2022.2/core/Appearances.csv',myzip)
@@ -31,6 +32,7 @@ def main(params):
     df_appearances.to_sql(name="appearances", con = engine, if_exists='append', chunksize=1000)
     df_batting.to_sql(name="batting", con = engine, if_exists='append', chunksize=1000)
     df_batting_post.to_sql(name="batting_post", con = engine, if_exists='append', chunksize=1000)
+    df_fielding.to_sql(name="fielding", con = engine, if_exists='append', chunksize=1000)
     df_fieldingOF.to_sql(name="fieldingOF", con = engine, if_exists='append', chunksize=1000)
     df_fieldingOFsplit.to_sql(name="fieldingOFsplit", con = engine, if_exists='append', chunksize=1000)
 
@@ -50,7 +52,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     main(args)
-## potential to do: write a loop that grabs every CSV from the core folder and converts to SQL schema
 
 
 ##print(pd.io.sql.get_schema(df_pitching, name = 'pitching_data'))
