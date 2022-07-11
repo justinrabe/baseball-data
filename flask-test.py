@@ -15,3 +15,7 @@ def v_pitching():
     data = curr.fetchall()
     return render_template('pitching.html', data=data)
 
+def v_batting():
+    curr.execute("SELECT * FROM batting limit 100")
+    data = curr.fetchall()
+    return render_template('batting.html', data=data)

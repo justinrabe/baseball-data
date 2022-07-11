@@ -11,6 +11,9 @@ Pandas might be too slow for these large datasets. I will need to use something 
 
 I can spin up a quick Flask website for visualization.
 
+I can develop my own RESTful APIs with Flask to pull data from SQL.
+    https://auth0.com/blog/developing-restful-apis-with-python-and-flask/
+
 # docker run -it \
 #   -e POSTGRES_USER="root" \
 #   -e POSTGRES_PASSWORD="root" \
@@ -18,3 +21,5 @@ I can spin up a quick Flask website for visualization.
 #   -v c:/Users/Justin/Documents/Git/baseball-data/baseball_data_volume:/var/lib/postgresql/data \
 #   -p 5432:5432 \
 #  postgres:13
+
+docker run -it -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="baseball_data" -v c:/Users/Justin/Documents/Git/baseball-data/baseball_data_volume:/var/lib/postgresql/data -p 5432:5432 postgres:13
