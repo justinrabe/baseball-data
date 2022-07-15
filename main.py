@@ -2,7 +2,7 @@ import pandas as pd
 import argparse
 import requests
 from zipfile import ZipFile
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey
 import io
 
 url = 'https://github.com/chadwickbureau/baseballdatabank/archive/refs/tags/v2022.2.zip'
