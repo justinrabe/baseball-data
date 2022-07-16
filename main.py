@@ -41,7 +41,7 @@ def extract_csv_from_zip (filename, myzip):
         return pd.read_csv(myfile, nrows = 100) ## limiting to 100 rows for faster testing
         
 def get_pitching (id):
-    
+    ##return GET REQUEST
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Ingest data to Postgres')
