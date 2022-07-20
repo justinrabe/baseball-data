@@ -14,6 +14,8 @@ I can spin up a quick Flask website for visualization.
 I can develop my own RESTful APIs with Flask to pull data from SQL.
     https://auth0.com/blog/developing-restful-apis-with-python-and-flask/
 
+Build a DWH in PostGresSQL first. Then I want to migrate that DWH to the cloud. Possible choices are Google BigQuery, AWS Redshift, etc.
+
 # docker run -it \
 #   -e POSTGRES_USER="root" \
 #   -e POSTGRES_PASSWORD="root" \
