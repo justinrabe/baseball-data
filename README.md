@@ -25,3 +25,5 @@ Build a DWH in PostGresSQL first. Then I want to migrate that DWH to the cloud. 
 #  postgres:13
 
 docker run -it -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="baseball_data" -v c:/Users/Justin/Documents/Git/baseball-data/baseball_data_volume:/var/lib/postgresql/data -p 5432:5432 postgres:13
+
+Take daily data via https://baseballsavant.mlb.com/csv-docs

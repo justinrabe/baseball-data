@@ -28,20 +28,20 @@ def main(params):
         df_fieldingOF = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOF.csv',myzip)
         df_fieldingOFsplit = extract_csv_from_zip('baseballdatabank-2022.2/core/FieldingOFsplit.csv',myzip)
 
-    df_pitching.to_sql(name="pitching", con = engine, if_exists='append', chunksize=1000)
-    df_appearances.to_sql(name="appearances", con = engine, if_exists='append', chunksize=1000)
-    df_batting.to_sql(name="batting", con = engine, if_exists='append', chunksize=1000)
-    df_batting_post.to_sql(name="batting_post", con = engine, if_exists='append', chunksize=1000)
-    df_fielding.to_sql(name="fielding", con = engine, if_exists='append', chunksize=1000)
-    df_fieldingOF.to_sql(name="fieldingOF", con = engine, if_exists='append', chunksize=1000)
-    df_fieldingOFsplit.to_sql(name="fieldingOFsplit", con = engine, if_exists='append', chunksize=1000)
+    print(df_pitching)
+    
+    # df_pitching.to_sql(name="pitching", con = engine, if_exists='append', chunksize=1000)
+    # df_appearances.to_sql(name="appearances", con = engine, if_exists='append', chunksize=1000)
+    # df_batting.to_sql(name="batting", con = engine, if_exists='append', chunksize=1000)
+    # df_batting_post.to_sql(name="batting_post", con = engine, if_exists='append', chunksize=1000)
+    # df_fielding.to_sql(name="fielding", con = engine, if_exists='append', chunksize=1000)
+    # df_fieldingOF.to_sql(name="fieldingOF", con = engine, if_exists='append', chunksize=1000)
+    # df_fieldingOFsplit.to_sql(name="fieldingOFsplit", con = engine, if_exists='append', chunksize=1000)
 
 def extract_csv_from_zip (filename, myzip):
     with myzip.open(filename) as myfile:
         return pd.read_csv(myfile, nrows = 100) ## limiting to 100 rows for faster testing
         
-def get_pitching (id):
-    ##return GET REQUEST
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Ingest data to Postgres')
